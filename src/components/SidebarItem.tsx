@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { CiBookmarkCheck } from "react-icons/ci";
 
+interface Props {
+  icon: React.ReactNode;
+  path: string;
+  title: string;
+}
+
 export const SidebarItem = () => {
   {
     /* Active className: text-white bg-gradient-to-r from-sky-600 to-cyan-400 */
