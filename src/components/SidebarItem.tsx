@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CiBookmarkCheck } from "react-icons/ci";
 
 interface Props {
   icon: React.ReactNode;
@@ -12,9 +11,6 @@ interface Props {
 export const SidebarItem = ({ icon, path, title }: Props) => {
   const pathName = usePathname();
 
-  {
-    /* Active className: text-white bg-gradient-to-r from-sky-600 to-cyan-400 */
-  }
   return (
     <li>
       <Link

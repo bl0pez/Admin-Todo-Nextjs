@@ -34,11 +34,27 @@ const postSchema = yup.object({
 
 export async function POST(request: Request) {
   try {
-    const { complete, description } = await postSchema.validate(await request.body);
+    const { complete, description } = await postSchema.validate(await request.json());
 
     const todo = await prisma.todo.create({ data: { complete, description } });
 
     return NextResponse.json(todo);
+  } catch (error: any) {
+    return NextResponse.json({ message: error.message }, { status: 400 });
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    
+    await prisma.todo.deleteMany({
+      where: {
+        complete: true
+      }
+    });
+
+    return NextResponse.json("Todos completados borrados");
+
   } catch (error: any) {
     return NextResponse.json({ message: error.message }, { status: 400 });
   }
